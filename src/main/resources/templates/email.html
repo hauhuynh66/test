@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+</head>
+<body class="bg-white">
+<div class="row">
+    <div class="col-4">
+    </div>
+    <div class="col-4">
+        <div class="limiter">
+            <div class="bg-light text-dark py-2 px-2 bordered-box">
+                <h4 class="px-3">Comfirm email</h4>
+            </div>
+            <span id="send-email-msg"></span>
+            <form id="loginform">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="reset-email" placeholder="Enter email">
+                </div>
+                <button type="button" class="btn btn-success btn-block" id="send-mail">OK</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+<script src="../static/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+</body>
+</html>

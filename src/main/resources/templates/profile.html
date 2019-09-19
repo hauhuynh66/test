@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light border">
+    <div class="col-11 text-left">CMS</div>
+    <div class="col-1 bg-light">
+        <a class="btn btn-outline-primary dropdown-toggle float-right" href="#" role="button" id="user-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#" th:href="@{/member/profile}"><i class="fa fa-user"></i> User Profile</a>
+            <a class="dropdown-item" href="#" th:href="@{/logout}"><i class="fa fa-sign-out"></i> Logout</a>
+        </div>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-3 bg-light p-0">
+        <div class="container">
+            <div class="input-group pt-4 pl-3">
+                <input class="form-control" type="text" placeholder="Search..." aria-label="Search" id="searchparam">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="searchbtn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <span id="search-msg"></span>
+        <ul class="nav flex-column px-3">
+            <li class="nav-item border border-left-0 border-right-0">
+                <a class="nav-link active" href="#" id="view-content" th:href="@{/member/content/allContent}">
+                    <i class="fa fa-table"></i>
+                    <span>
+                        View Contents
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item border border-left-0 border-right-0">
+                <a class="nav-link" href="#" id="add-content" th:href="@{/member/content/add}">
+                    <i class="fa fa-calendar"></i>
+                    <span>
+                        Form Content
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-9 px-4 py-4">
+        <h2 class="pt-4 pb-1" style="border-bottom: 1px solid black">Edit Profile</h2>
+        <div class="border-content">
+            <div id="tag-line" class="col border border-bottom-0">
+                <div class="row bg-light p-2 ">
+                    Profile Form Elements
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <form style="padding-right: 200px">
+                    <span id="edit-profile-msg"></span>
+                    <div class="form-group">
+                        <label for="edit-fName">First Name</label>
+                        <input class="form-control" placeholder="Enter Your First Name" type="text" id="edit-fName">
+                        <small id="fName-validator" class="text-danger"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-lName">Last Name</label>
+                        <input class="form-control" type="text" placeholder="Enter Your Last Name" id="edit-lName">
+                        <small id="lName-validator" class="text-danger"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="current-email">Email</label><br>
+                        <strong id="current-email" th:text="${email}"></strong>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-phone">Phone</label>
+                        <input class="form-control" type="text" placeholder="Enter Your Phone Number" id="edit-phone">
+                        <small id="phone-validator" class="text-danger"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-des">Description :</label>
+                        <textarea class="form-control" rows="5" id="edit-des"></textarea>
+                    </div>
+                    <br>
+                    <button type="button" id="edit-profile" class="btn btn-success">Submit</button>
+                    <button type="reset" id="reset-profile" class="btn btn-success">Reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript" src="../static/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+<script type="text/javascript" src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+</body>
+</html>
