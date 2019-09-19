@@ -19,6 +19,9 @@ public class SensorValue {
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
 
+    public SensorValue() {
+    }
+
     public SensorValue(@Max(50) double temp, @Max(100) @Min(0) double humid, Date time) {
         this.temp = temp;
         this.humid = humid;
