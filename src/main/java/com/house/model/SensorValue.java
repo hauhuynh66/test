@@ -6,7 +6,7 @@ import javax.validation.constraints.Min;
 import java.util.Date;
 
 @Entity
-@Table(name = "temp_humid")
+@Table(name = "DHT")
 public class SensorValue {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
