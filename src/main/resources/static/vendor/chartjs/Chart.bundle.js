@@ -16496,7 +16496,7 @@ var moment = createCommonjsModule(function (module, exports) {
         }
     }
 
-    var add      = createAdder(1, 'add');
+    var add      = createAdder(1, 'templates.add');
     var subtract = createAdder(-1, 'subtract');
 
     function getCalendarFormat(myMoment, now) {

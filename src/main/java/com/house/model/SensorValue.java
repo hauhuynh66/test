@@ -12,6 +12,7 @@ public class SensorValue {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     @Max(50)
+    @Min(-10)
     private double temp;
     @Max(100)
     @Min(0)
@@ -22,7 +23,7 @@ public class SensorValue {
     public SensorValue() {
     }
 
-    public SensorValue(@Max(50) double temp, @Max(100) @Min(0) double humid, Date time) {
+    public SensorValue(@Max(50) @Min(-10) double temp, @Max(100) @Min(0) double humid, Date time) {
         this.temp = temp;
         this.humid = humid;
         this.time = time;

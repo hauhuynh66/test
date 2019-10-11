@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomAuthenticationFailureListener implements ApplicationListener<AuthenticationFailureBadCredentialsEvent> {
     @Autowired
-    private LoginAttempService loginAttempService;
+    private LoginAttemptService loginAttemptService;
     @Override
     public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent authenticationFailureBadCredentialsEvent) {
         WebAuthenticationDetails authenticationDetails =
                 (WebAuthenticationDetails)authenticationFailureBadCredentialsEvent.getAuthentication().getDetails();
-        loginAttempService.onLoginFailed(authenticationDetails.getRemoteAddress());
+        loginAttemptService.onLoginFailed(authenticationDetails.getRemoteAddress());
     }
 }

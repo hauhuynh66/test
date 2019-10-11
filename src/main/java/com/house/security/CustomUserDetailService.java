@@ -17,7 +17,7 @@ public class CustomUserDetailService implements UserDetailsService {
     @Autowired
     private HttpServletRequest request;
     @Autowired
-    private LoginAttempService loginAttempService;
+    private LoginAttemptService loginAttempService;
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         String IP = getClientIP();

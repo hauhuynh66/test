@@ -15,9 +15,16 @@ public class AdminController {
         mv.addObject("user",new User());
         return mv;
     }
+
     @GetMapping("/dashboard")
     public ModelAndView adminHome(){
-        ModelAndView mv = new ModelAndView("admin");
+        return new ModelAndView("admin");
+    }
+
+    @GetMapping("/user_list")
+    public ModelAndView userList(){
+        ModelAndView mv = new ModelAndView("users");
+        mv.addObject("users","");
         return mv;
     }
 }

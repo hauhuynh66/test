@@ -9,13 +9,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class LoginAttempService {
-    private int MAX_FAILURE_ATTEMPS = 5;
-    private LoadingCache<String,Integer> attempsCache;
+public class LoginAttemptService {
+    private int MAX_FAILURE_ATTEMPTS = 5;
+    private LoadingCache<String,Integer> attemptsCache;
 
-    public LoginAttempService() {
+    public LoginAttemptService() {
         super();
-        attempsCache = CacheBuilder.newBuilder()
+        attemptsCache = CacheBuilder.newBuilder()
                 .expireAfterWrite(10, TimeUnit.MINUTES).build(new CacheLoader<String, Integer>() {
                     public Integer load(String s) throws Exception {
                         return 0;
@@ -23,21 +23,21 @@ public class LoginAttempService {
                 });
     }
     public void onLoginSuccedded(String key){
-        attempsCache.invalidate(key);
+        attemptsCache.invalidate(key);
     }
     public void onLoginFailed(String key){
         int attemps = 0;
         try {
-            attemps = attempsCache.get(key);
+            attemps = attemptsCache.get(key);
         }catch (ExecutionException e){
             attemps = 0;
         }
         attemps++;
-        attempsCache.put(key,attemps);
+        attemptsCache.put(key,attemps);
     }
     public boolean isBlocked(String key){
         try {
-            return attempsCache.get(key)>=MAX_FAILURE_ATTEMPS;
+            return attemptsCache.get(key)>=MAX_FAILURE_ATTEMPTS;
         }catch (ExecutionException e){
             return false;
         }

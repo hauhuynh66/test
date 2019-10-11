@@ -14,12 +14,20 @@ public class CommandLines implements CommandLineRunner {
     private UserRepository userRepository;
     @Override
     public void run(String... args) throws Exception {
-        /*User user = new User();
-        user.setName("Hau Huynh");
-        user.setEmail("hauhuynh66@gmail.com");
-        user.setPassword(utils.passwordEncoder().encode("Hauhuynh"));
-        user.setRole("USER");
-        user.setDisabled(false);
-        userRepository.save(user);*/
+        User user1 = new User();
+        user1.setName("Hau Huynh");
+        user1.setEmail("hauhuynh66@gmail.com");
+        user1.setPassword(utils.passwordEncoder().encode("Hauhuynh"));
+        user1.setRole("ADMIN");
+        user1.setDisabled(false);
+        userRepository.save(user1);
+
+        User user2 = new User();
+        user2.setName("Lap Ton");
+        user2.setEmail("lapton11@gmail.com");
+        user2.setPassword(utils.passwordEncoder().encode("Lapton"));
+        user2.setRole("USER");
+        user2.setDisabled(false);
+        userRepository.save(user2);
     }
 }

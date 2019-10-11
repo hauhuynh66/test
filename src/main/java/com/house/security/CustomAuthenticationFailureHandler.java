@@ -22,8 +22,8 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         Locale locale = localeResolver.resolveLocale(httpServletRequest);
-        String errorMessgage = messageSource.getMessage("message.auth.badCredentials",null,locale);
-        System.out.println(errorMessgage);
+        String errorMessage = messageSource.getMessage("message.auth.badCredentials",null,locale);
+        System.out.println(errorMessage);
         if(e.getMessage().equalsIgnoreCase("blocked")){
             httpServletResponse.sendRedirect("/login?blocked");
         }else if(e.getMessage().equalsIgnoreCase("disabled")) {

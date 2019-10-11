@@ -16,4 +16,8 @@ public class UserController {
     public ModelAndView statistic(){
         return new ModelAndView("statistics");
     }
+    @GetMapping("/tables")
+    public ModelAndView tables(){
+        return new ModelAndView("tables");
+    }
 }

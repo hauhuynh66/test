@@ -2098,7 +2098,7 @@
     }
 
     _createClass(Library, [{
-      key: "add",
+      key: "templates.add",
       value: function add() {
         var _this = this;
 

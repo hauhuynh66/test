@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomAuthenticationSuccessListener implements ApplicationListener<AuthenticationSuccessEvent> {
     @Autowired
-    private LoginAttempService loginAttempService;
+    private LoginAttemptService loginAttemptService;
 
     @Override
     public void onApplicationEvent(AuthenticationSuccessEvent authenticationSuccessEvent) {
         WebAuthenticationDetails authenticationDetails =
                 (WebAuthenticationDetails) authenticationSuccessEvent.getAuthentication().getDetails();
-        loginAttempService.onLoginSuccedded(authenticationDetails.getRemoteAddress());
+        loginAttemptService.onLoginSuccedded(authenticationDetails.getRemoteAddress());
     }
 }
