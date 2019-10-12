@@ -1,17 +1,15 @@
 package com.house.security;
 
-import com.house.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Set;
 
@@ -20,6 +18,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+        addCookie(getUserName(authentication),httpServletResponse);
         if(roles.contains("ROLE_ADMIN")){
             httpServletResponse.sendRedirect("/admin/dashboard");
         }else if(roles.contains("ROLE_USER")){
@@ -27,22 +26,13 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         }
     }
     private String getUserName(final Authentication authentication){
-        return ((User)authentication.getPrincipal()).getName();
+        return ((CustomUserDetails)authentication.getPrincipal()).getUsername();
     }
+
     private void addCookie(final String userName, final HttpServletResponse response){
-        Cookie cookie = getCookie(userName);
-        response.addCookie(cookie);
-    }
-    private Cookie getCookie(final String userName){
-        Cookie cookie = new Cookie("welcome",userName);
+        Cookie cookie = new Cookie("user",userName);
         cookie.setMaxAge(60*60*24);
-        return cookie;
-    }
-    protected void clearAuthenticationAttributes(final HttpServletRequest request){
-        final HttpSession session = request.getSession(false);
-        if(session==null){
-            return;
-        }
-        session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+        cookie.setPath("/");
+        response.addCookie(cookie);
     }
 }

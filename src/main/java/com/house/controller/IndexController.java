@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class IndexController {
     @Autowired
@@ -25,7 +28,6 @@ public class IndexController {
                 return new ModelAndView("redirect:/user/dashboard");
             }
         }
-
     }
 
     @GetMapping("/forget-password")
@@ -43,5 +45,10 @@ public class IndexController {
             mv.addObject("user",user);
             return mv;
         }
+    }
+
+    @GetMapping("/forbidden")
+    public ModelAndView forbidden(){
+        return new ModelAndView("forbidden");
     }
 }
