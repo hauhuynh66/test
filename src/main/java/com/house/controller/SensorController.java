@@ -41,5 +41,10 @@ public class SensorController {
         List<SensorValue> data = sensorValueRepository.findAll(new Sort(Sort.Direction.DESC,"id"));
         return utils.mapper(data.get(0));
     }
+    @GetMapping("/data")
+    @ResponseBody
+    public String response(){
+        return "OK";
+    }
 
 }
